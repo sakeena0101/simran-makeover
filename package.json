@@ -1,0 +1,15 @@
+{
+  "name": "simran-makeover-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Simran Makeover",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

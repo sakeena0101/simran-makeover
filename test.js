@@ -1,0 +1,1 @@
+console.log("VS Code JavaScript is working!");

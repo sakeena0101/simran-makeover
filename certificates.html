@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Certificate Hub | Simran Makeover</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .upload-wrapper { max-width: 550px; margin: 50px auto; background: #161616; padding: 35px; border: 1px dashed #bd9a5f; text-align: center; border-radius: 8px; }
+        .container { padding: 40px 8%; text-align: center; }
+        .subtitle { color: var(--text-muted); margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SIMRAN MAKEOVER</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">Salon Details</a>
+            <a href="gallery.html">Gallery Matrix</a>
+            <a href="certificates.html" class="active">Certificates Dashboard</a>
+            <a href="location.html">Find Us</a>
+            <a href="index.html#query" class="btn-nav">Drop a Query</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Changed class to pink-section-title to convert heading to dark pink color -->
+        <h2 class="pink-section-title">Student Certificate Verification Hub</h2>
+        <p class="subtitle">Upload your official Academy course passing certificate instantly to showcase on our public registry.</p>
+
+        <div class="upload-wrapper">
+            <form id="certForm">
+                <input type="text" id="studentName" required placeholder="Enter Graduate Full Name" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #333; color:white; border-radius:4px;"><br>
+                <input type="text" id="courseName" required placeholder="Course Name (e.g., Master Nail Art)" style="width:100%; padding:12px; margin-bottom:15px; background:#222; border:1px solid #333; color:white; border-radius:4px;"><br>
+                <input type="text" id="certUrl" required placeholder="Paste Certificate Image URL here" style="width:100%; padding:12px; margin-bottom:20px; background:#222; border:1px solid #333; color:white; border-radius:4px;"><br>
+                <button type="submit" class="btn-gold">Publish Certificate Live</button>
+            </form>
+            <div id="uploadStatus" style="margin-top:15px; color:#bd9a5f; font-weight:600;"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Branding Section with Logo and Summary -->
+            <div class="footer-branding">
+                <div class="footer-logo">SIMRAN MAKEOVER</div>
+                <p class="footer-summary">
+                    Premier bridal styling, luxury aesthetics, and a professional training academy based in Sirsa, Haryana. Empowering you to embrace your inner elegance with passion, precision, and world-class beauty standards.
+                </p>
+            </div>
+
+            <!-- Quick Navigation Links Tree -->
+            <div>
+                <h4 class="footer-links-heading">Quick Exploration</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Salon Details</a></li>
+                    <li><a href="gallery.html">Gallery Matrix</a></li>
+                    <li><a href="certificates.html">Certificates Dashboard</a></li>
+                    <li><a href="location.html">Find Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- System Copyright Bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simran Makeover Sirsa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Handle submission to backend database.json storage cleanly
+        document.getElementById('certForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const status = document.getElementById('uploadStatus');
+            const payload = {
+                student: document.getElementById('studentName').value,
+                course: document.getElementById('courseName').value,
+                url: document.getElementById('certUrl').value
+            };
+
+            try {
+                status.style.color = "#bd9a5f";
+                status.innerText = "Processing submission...";
+
+                const res = await fetch('/api/upload-cert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if(res.ok) {
+                    status.style.color = "#8C5647"; // Status response text color matched to dark pink theme
+                    status.innerText = "✓ Certificate registered and published live!";
+                    document.getElementById('certForm').reset();
+                } else {
+                    status.style.color = "red";
+                    status.innerText = "Failed to store record on server.";
+                }
+            } catch {
+                status.style.color = "red";
+                status.innerText = "Error contacting backend server.";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Salon & Academy | Simran Makeover</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-header { background: #121212; padding: 60px 8%; text-align: center; border-bottom: 1px solid #222; }
+        .stats-bar { display: flex; justify-content: center; gap: 60px; margin: 30px 0; }
+        .stat-item h4 { font-size: 32px; color: #d4af37; }
+        .stat-item p { color: #888; font-size: 14px; }
+        .bio-text { max-width: 800px; margin: 0 auto; text-align: center; font-size: 17px; color: #ccc; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SIMRAN MAKEOVER</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">Salon Details</a>
+            <a href="gallery.html">Gallery Matrix</a>
+            <a href="certificates.html">Certificates Dashboard</a>
+            <a href="location.html">Find Us</a>
+            <a href="index.html#query" class="btn-nav">Drop a Query</a>
+        </nav>
+    </header>
+
+    <div class="about-header">
+        <h2 style="font-family:'Playfair Display'; font-size: 42px; color:#d4af37;">Simran Make-up, Lash, Nail Studio & Academy</h2>
+        <p style="color: #888;">SIRSA NO.1 BEAUTY ACADEMY</p>
+        
+        <!-- Live Verified Instagram Stats Integration -->
+        <div class="stats-bar">
+            <div class="stat-item"><h4>781</h4><p>Posts Published</p></div>
+            <div class="stat-item"><h4>5,381</h4><p>Followers Community</p></div>
+            <div class="stat-item"><h4>562</h4><p>Following Profiles</p></div>
+        </div>
+
+        <div class="bio-text">
+            <p><strong>Professional Artists & Educators:</strong> Pro Nail Artist | Lash Artist | Freelance Makeup Artist. We provide complete live model practices, international standard trial classes, and certified setups for ambitious career makers in Haryana.</p>
+        </div>
+    </div>
+
+    <!-- --- Premium Services Portfolio Grid with Scroll Animations --- -->
+    <section class="services-container">
+        <h2 class="pink-section-title">Academy Course Portfolio</h2>
+        <p class="subtitle">Explore our professional studio services and academy specializations</p>
+
+        <div class="services-grid">
+            <!-- Card 1: Advanced Nail Extensions -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df490651e56c?q=80&w=600" alt="Advanced Nail Extensions" class="service-card-img">
+                </div>
+                <div class="service-card-content">
+                    <h3>Advanced Nail Extension</h3>
+                    <p>Learn Gel overlays, Acrylic extensions, 3D Nail Art, Chrome finishes, and professional salon filings with full practical tool kits provided.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Eyelash Extension Masterclass -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?q=80&w=600" alt="Eyelash Extension Masterclass" class="service-card-img">
+                </div>
+                <div class="service-card-content">
+                    <h3>Eyelash Extension Masterclass</h3>
+                    <p>Master Classic, Hybrid, Volume, and Mega-Volume lash maps including proper isolate practices and safe chemical removal methods.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Bridal & Celebrity Makeup -->
+            <div class="service-card reveal-on-scroll">
+                <div class="service-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=600" alt="Bridal & Celebrity Makeup" class="service-card-img">
+                </div>
+                <div class="service-card-content">
+                    <h3>Bridal & Celebrity Makeup</h3>
+                    <p>Includes HD makeup systems, Airbrush techniques, traditional Indian bridal styles, skin analysis, and digital portfolio management templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Branding Section with Logo and Summary -->
+            <div class="footer-branding">
+                <div class="footer-logo">SIMRAN MAKEOVER</div>
+                <p class="footer-summary">
+                    Premier bridal styling, luxury aesthetics, and a professional training academy based in Sirsa, Haryana. Empowering you to embrace your inner elegance with passion, precision, and world-class beauty standards.
+                </p>
+            </div>
+
+            <!-- Quick Navigation Links Tree -->
+            <div>
+                <h4 class="footer-links-heading">Quick Exploration</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Salon Details</a></li>
+                    <li><a href="gallery.html">Gallery Matrix</a></li>
+                    <li><a href="certificates.html">Certificates Dashboard</a></li>
+                    <li><a href="location.html">Find Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- System Copyright Bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simran Makeover Sirsa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll Motion Dynamic JavaScript Hook -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const revealElements = document.querySelectorAll(".reveal-on-scroll");
+
+            const revealOnScroll = () => {
+                const triggerBottom = window.innerHeight * 0.85; 
+
+                revealElements.forEach((element) => {
+                    const elementTop = element.getBoundingClientRect().top;
+
+                    if (elementTop < triggerBottom) {
+                        element.classList.add("active");
+                    }
+                });
+            };
+
+            revealOnScroll();
+            window.addEventListener("scroll", revealOnScroll);
+        });
+    </script>
+</body>
+</html>

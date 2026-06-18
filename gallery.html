@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Gallery - Simran Makeover</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gallery-container {
+            padding: 40px 8%;
+            text-align: center;
+        }
+        .gallery-section {
+            margin-bottom: 50px;
+        }
+        .gallery-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #bd9a5f;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #bd9a5f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+        .image-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+        .back-home {
+            margin-top: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SIMRAN MAKEOVER</div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">Salon Details</a>
+            <a href="gallery.html">Gallery Matrix</a>
+            <a href="certificates.html">Certificates Dashboard</a>
+            <a href="location.html">Find Us</a>
+            <a href="#query" class="btn-nav">Drop a Query</a>
+        </nav>
+    </header>
+
+    <!-- Main Gallery Page Content -->
+    <div class="gallery-container">
+        <h2>Our Work</h2>
+        <p style="margin-bottom: 40px;">Explore the beautiful transformations created by Simran Makeover Studio & Academy.</p>
+
+        <!-- Category 1: Nails -->
+        <div class="gallery-section">
+            <h3>Pro Nail Art</h3>
+            <div class="image-grid">
+                <img src="images/nails3.jpeg" class="reveal-on-scroll" alt="Nail 1">
+                <img src="images/nails2.jpeg" class="reveal-on-scroll" alt="Nail 2">
+                <img src="images/nails1.jpg" class="reveal-on-scroll" alt="Nail 3">
+            </div>
+        </div>
+
+        <!-- Category 2: Lashes -->
+        <div class="gallery-section">
+            <h3>Lash Artistry</h3>
+            <div class="image-grid">
+                <img src="images/lash1.jpeg" class="reveal-on-scroll" alt="Lash 1">
+                <img src="images/lash2.jpeg" class="reveal-on-scroll" alt="Lash 2">
+                <img src="images/lash3.jpeg" class="reveal-on-scroll" alt="Lash 3">
+            </div>
+        </div>
+
+        <!-- Category 3: Makeup -->
+        <div class="gallery-section">
+            <h3>Bridal & Glam Makeup</h3>
+            <div class="image-grid">
+                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=400" class="reveal-on-scroll" alt="Makeup 1">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=400" class="reveal-on-scroll" alt="Makeup 2">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=400" class="reveal-on-scroll" alt="Makeup 3">
+            </div>
+        </div>
+
+        <div class="back-home">
+            <a href="index.html" class="btn">← Back To Home</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <!-- Branding Section with Logo and Summary -->
+            <div class="footer-branding">
+                <div class="footer-logo">SIMRAN MAKEOVER</div>
+                <p class="footer-summary">
+                    Premier bridal styling, luxury aesthetics, and a professional training academy based in Sirsa, Haryana. Empowering you to embrace your inner elegance with passion, precision, and world-class beauty standards.
+                </p>
+            </div>
+
+            <!-- Quick Navigation Links Tree -->
+            <div>
+                <h4 class="footer-links-heading">Quick Exploration</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">Salon Details</a></li>
+                    <li><a href="gallery.html">Gallery Matrix</a></li>
+                    <li><a href="certificates.html">Certificates Dashboard</a></li>
+                    <li><a href="location.html">Find Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- System Copyright Bar -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Simran Makeover Sirsa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach((el) => {
+            scrollObserver.observe(el);
+        });
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>

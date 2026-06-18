@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard - Simran Makeover</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <style>
+        .login-wrapper, .admin-wrapper {
+            max-width: 700px; margin: 40px auto; background: #FFFFFF;
+            padding: 40px; border: 1px solid #DCD3C1; border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+        }
+        .hidden { display: none !important; }
+        .input-field {
+            width: 100%; padding: 14px; margin-bottom: 18px;
+            background: #F4EFE6; border: 1px solid transparent; border-radius: 4px;
+            color: #2A2B2E; font-size: 14px; font-family: inherit;
+        }
+        .input-field:focus { outline: none; border-color: #2A2B2E; background: #FFFFFF; }
+        .btn-admin {
+            width: 100%; padding: 16px; background: #2A2B2E; color: #FFFFFF;
+            border: none; font-weight: 600; text-transform: uppercase;
+            cursor: pointer; border-radius: 4px; letter-spacing: 0.5px;
+        }
+        .btn-admin:hover { background: #404247; }
+        h2, h3 { font-family: 'Playfair Display', serif; text-align: center; color: #2A2B2E; margin-bottom: 10px; }
+        p.info-text { text-align: center; color: #55585E; font-size: 14px; margin-bottom: 30px; }
+        
+        /* Data Log Table Styling */
+        .data-table-wrapper { margin-top: 40px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; text-align: left; }
+        th { background: #2A2B2E; color: #FFFFFF; padding: 12px; font-weight: 600; }
+        td { padding: 12px; border-bottom: 1px solid #DCD3C1; color: #2A2B2E; }
+        tr:nth-child(even) { background: #F9F7F2; }
+        .thumb-img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; border: 1px solid #DCD3C1; }
+        .view-link { color: #A69291; text-decoration: none; font-weight: 600; }
+        .view-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">SIMRAN MAKEOVER • PARTNER PORTAL</div>
+    </header>
+
+    <div class="container">
+        <!-- 1. Lock Screen Setup -->
+        <div id="loginBox" class="login-wrapper">
+            <h2>Partner Authentication</h2>
+            <p class="info-text">Please enter your workspace security key to access the certificate engine.</p>
+            <input type="password" id="adminPassword" placeholder="Enter Secure Password" class="input-field">
+            <button onclick="login()" class="btn-admin">Verify Identity</button>
+            <p id="loginError" style="color: red; text-align: center; margin-top: 15px; font-weight: 500;"></p>
+        </div>
+
+        <!-- 2. Main Admin Panel Workspace -->
+        <div id="adminPanel" class="admin-wrapper hidden">
+            <h2>Certificate Dispatch</h2>
+            <p class="info-text">Add verified students below. Entries are securely locked once published.</p>
+            
+            <!-- Upload Form -->
+            <form id="certForm">
+                <input type="text" id="studentName" required placeholder="Graduate Full Name" class="input-field">
+                <input type="text" id="courseName" required placeholder="Course Specialization" class="input-field">
+                <input type="text" id="certUrl" required placeholder="Certificate Image URL" class="input-field">
+                <button type="submit" class="btn-admin">Publish To Public Registry</button>
+            </form>
+            <div id="uploadStatus" style="margin-top:20px; text-align:center; font-weight:600;"></div>
+            
+            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #DCD3C1;">
+
+            <!-- 3. CUSTOMER DATA LOG VISUALIZER -->
+            <h3>Registered Student Logs</h3>
+            <p style="text-align: center; color: #777; font-size: 13px;">Live database view of all customer records currently active on your website.</p>
+            
+            <div class="data-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Preview</th>
+                            <th>Student Name</th>
+                            <th>Course Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                        <!-- Database rows will load here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <hr style="margin: 40px 0; border: 0; border-top: 1px solid #DCD3C1;">
+            <button onclick="logout()" style="background:#A69291;" class="btn-admin">Disconnect Portal</button>
+        </div>
+    </div>
+
+    <script>
+        // Password configuration
+        const SECRET_KEY = "simran_client_access";
+
+        function login() {
+            const password = document.getElementById('adminPassword').value;
+            const error = document.getElementById('loginError');
+
+            if (password === SECRET_KEY) {
+                document.getElementById('loginBox').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                error.innerText = "";
+                loadStudentData(); // Load data rows immediately after login
+            } else {
+                error.innerText = "❌ Security key verification failed.";
+            }
+        }
+
+        function logout() {
+            document.getElementById('adminPassword').value = "";
+            document.getElementById('loginBox').classList.remove('hidden');
+            document.getElementById('adminPanel').classList.add('hidden');
+        }
+
+        // Fetch records from backend and display them inside a table
+        async function loadStudentData() {
+            const tbody = document.getElementById('studentTableBody');
+            tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#777;'>Fetching records...</td></tr>";
+            
+            try {
+                const res = await fetch('/api/get-certs');
+                const data = await res.json();
+                tbody.innerHTML = "";
+
+                if(!data || data.length === 0) {
+                    tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:#777;'>No customer records found in the database.</td></tr>";
+                    return;
+                }
+
+                data.forEach(item => {
+                    tbody.innerHTML += `
+                        <tr>
+                            <td><img src="${item.url}" class="thumb-img" onerror="this.src='https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=100'"></td>
+                            <td style="font-weight:600;">${item.student}</td>
+                            <td>${item.course}</td>
+                            <td><a href="${item.url}" target="_blank" class="view-link">View Full Link ↗</a></td>
+                        </tr>
+                    `;
+                });
+            } catch (err) {
+                tbody.innerHTML = "<tr><td colspan='4' style='text-align:center; color:red; font-weight:600;'>Error connecting to database file.</td></tr>";
+            }
+        }
+
+        // Form Submit Handler
+        document.getElementById('certForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const status = document.getElementById('uploadStatus');
+            const payload = {
+                student: document.getElementById('studentName').value,
+                course: document.getElementById('courseName').value,
+                url: document.getElementById('certUrl').value
+            };
+
+            status.style.color = "#2A2B2E";
+            status.innerText = "Registering record safely...";
+
+            try {
+                const res = await fetch('/api/upload-cert', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if(res.ok) {
+                    status.style.color = "green";
+                    status.innerText = "✓ Certificate registered successfully!";
+                    document.getElementById('certForm').reset();
+                    loadStudentData(); // Instantly refresh the table list!
+                } else {
+                    status.style.color = "red";
+                    status.innerText = "Failed to upload data.";
+                }
+            } catch {
+                status.style.color = "red";
+                status.innerText = "Network error. Make sure your server is running.";
+            }
+        });
+    </script>
+</body>
+</html>

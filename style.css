@@ -1,0 +1,1127 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- Premium Etsy-Inspired Luxury Gold & Silk Palette Overrides --- */
+:root {
+    --luxury-bg: #FAF5F2;          /* Soft Silk Cream Page Canvas */
+    --card-bg: #FFFFFF;            /* Clean crisp white background for content blocks */
+    --text-dark: #3D2722;          /* Rich Dark Espresso Brown for high contrast text */
+    --text-muted: #7A5C55;         /* Elegant Soft Muted Rose-Brown for subtitles */
+    --luxury-pink: #8E4A42;        /* Richer, deeper luxury pink/rose for targeted headers */
+    
+    /* Luxury Shimmering Gold Texture Gradients */
+    --gold-gradient: linear-gradient(135deg, #CFAC62 0%, #EDD69A 50%, #C79D4C 100%);
+    --gold-hover: linear-gradient(135deg, #DFBE75 0%, #F5E3B5 50%, #D8AE5E 100%);
+    --header-gradient: linear-gradient(90deg, #A37063 0%, #C49285 50%, #A37063 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--luxury-bg);
+}
+
+/* --- Navigation Header Customization --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: var(--header-gradient) !important; 
+    border-bottom: 3px solid #CFAC62;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(61, 39, 34, 0.15);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #FFFFFF !important;
+    text-shadow: 1px 1px 3px rgba(61, 39, 34, 0.4);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FAF5F2 !important;
+    margin-left: 25px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+/* Clearer text color for hover and active items in navigation bar */
+nav a:hover, nav a.active {
+    color: #EDD69A !important;
+}
+
+/* High-end sliding pure gold underline animation */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--gold-gradient);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after, nav a.active::after {
+    width: 100%;
+}
+
+.btn-nav {
+    background: var(--gold-gradient) !important;
+    color: var(--text-dark) !important; /* Rich Dark Espresso Text */
+    padding: 10px 22px !important;
+    border-radius: 4px;
+    border: 1px solid #FFFFFF !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease !important;
+}
+
+/* Fixes the washed-out contrast issue when clicked/focused */
+.btn-nav:hover, .btn-nav:focus, .btn-nav:active {
+    background: var(--gold-hover) !important;
+    color: var(--text-dark) !important; 
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(207, 172, 98, 0.6);
+}
+
+.btn-nav::after {
+    display: none !important;
+}
+
+/* --- Premium Hero Presentation Box --- */
+.hero {
+    background: linear-gradient(rgba(61, 39, 34, 0.5), rgba(61, 39, 34, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1200') no-repeat center center/cover;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    border-bottom: 4px solid #CFAC62;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    animation: premiumFadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 35px;
+    color: #FAF5F2;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    animation: premiumFadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.hero-content {
+    animation: premiumFadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* --- Premium Action Portfolio Button --- */
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    background: var(--gold-gradient) !important;
+    color: var(--text-dark) !important;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: goldPulseGlow 3s infinite ease-in-out;
+}
+
+.btn:hover {
+    background: var(--gold-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(237, 214, 154, 0.5);
+}
+
+/* --- Section Formatting Headers --- */
+.section {
+    padding: 90px 8%;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    margin-bottom: 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+/* PREMIUM DARK PINK TYPOGRAPHY HEADLINE CLASS */
+.pink-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--luxury-pink) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    display: block;
+    margin-bottom: 12px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* --- Dynamic Query Box Form Dashboard --- */
+.query-box {
+    max-width: 550px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 45px 35px;
+    border: 1px solid #E6DCD6;
+    border-top: 5px solid #CFAC62;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(61, 39, 34, 0.06);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-dark);
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #FCFBFB;
+    border: 1px solid #D6C7C2;
+    border-radius: 4px;
+    color: var(--text-dark);
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+    color: #B09A95;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #CFAC62;
+    box-shadow: 0 4px 15px rgba(207, 172, 98, 0.25);
+    background: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+/* --- Full Golden Gradient Form Submit Button --- */
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold-gradient) !important;
+    color: var(--text-dark) !important;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(61, 39, 34, 0.1);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: var(--gold-hover) !important;
+    box-shadow: 0 6px 18px rgba(207, 172, 98, 0.3);
+    transform: translateY(-1px);
+}
+
+/* --- Modern Split Layout for Location Page --- */
+.location-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.address-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 5px solid #CFAC62;
+    box-shadow: 0 15px 35px rgba(61, 39, 34, 0.05);
+}
+
+/* Updates the 'Visit Our Studio' title color to match the premium dark pink theme */
+.address-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--luxury-pink) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.info-block {
+    margin-bottom: 25px;
+}
+
+.info-block h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.info-block p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    font-weight: 500;
+}
+
+.map-wrapper {
+    border: 3px solid #E6DCD6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(61, 39, 34, 0.08);
+    height: 450px;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ==========================================================================
+   CLEAN LUXURY FOOTER LAYOUT SYSTEM
+   ========================================================================== */
+.premium-luxury-footer {
+    background: #111111; /* Sleek rich dark slate finish */
+    color: #ffffff;
+    padding: 80px 0 0 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-top: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-brand-p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin-bottom: 25px;
+}
+
+/* Contact Specifications Area Layout */
+.contact-details-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact-icon {
+    font-size: 14px;
+}
+
+.contact-text {
+    font-size: 13.5px;
+    color: #cccccc;
+    line-height: 1.4;
+}
+
+/* Column Header Design Layouts */
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #c5a880; /* Premium luxury gold heading */
+    margin: 0 0 25px 0;
+    position: relative;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column ul li a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* Opening Hours Stack Layout */
+.timing-schedule p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin: 0 0 15px 0;
+}
+
+.timing-schedule strong {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   CLEAN LUXURY FOOTER LAYOUT SYSTEM (PERFECTLY BALANCED WIDE GRID)
+   ========================================================================== */
+.premium-luxury-footer {
+    background: #111111; /* Sleek rich dark slate finish */
+    color: #ffffff;
+    padding: 80px 0 0 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-top: 1px solid rgba(197, 168, 128, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4%; /* Adjusted for premium balanced side margins */
+    display: grid;
+    /* FORCES ALL 4 COLUMNS TO HAVE EXACTLY EQUAL DISTANCES AND WIDTHS */
+    grid-template-columns: repeat(4, 1fr); 
+    justify-content: space-between; 
+    gap: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.footer-brand-p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin-bottom: 25px;
+}
+
+/* Contact Specifications Area Layout */
+.contact-details-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact-icon {
+    font-size: 14px;
+}
+
+.contact-text {
+    font-size: 13.5px;
+    color: #cccccc;
+    line-height: 1.4;
+}
+
+/* Column Header Design Layouts */
+.footer-column h3 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #c5a880; /* Premium luxury gold heading */
+    margin: 0 0 25px 0;
+    position: relative;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-column ul li a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* Opening Hours Stack Layout */
+.timing-schedule p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin: 0 0 15px 0;
+}
+
+.timing-schedule strong {
+    color: #ffffff;
+}
+
+/* Micro Minimalist Social Handles Row */
+.footer-socials-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-socials-row a {
+    color: #c5a880;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(197, 168, 128, 0.3);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.footer-socials-row a:hover {
+    background: #c5a880;
+    color: #111111;
+    border-color: #c5a880;
+}
+
+/* Base-plate Copyright Band Area Line */
+.footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 60px;
+    padding: 25px 0;
+    background: #0a0a0a;
+}
+
+.footer-bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4%; /* Symmetrical to the top layout spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #777777;
+    width: 100%;
+    box-sizing: border-box; /* Prevents overflow issues */
+}
+
+.footer-bottom-container p {
+    margin: 0;
+}
+
+.footer-utility-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-utility-links a {
+    color: #777777;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-utility-links a:hover {
+    color: #c5a880;
+}
+
+/* Responsive Grid Adapters for Footers */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Responsive Grid Adapters for Footers */
+@media (max-width: 992px) {
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Responsive adjustments for mobile footers */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    .footer-branding {
+        max-width: 100%;
+        text-align: center;
+    }
+    .footer-links {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/* --- Mobile Breakpoint Responsiveness Engine --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column !important; 
+        gap: 15px !important;
+        padding: 20px 4% !important;
+    }
+    nav {
+        flex-wrap: wrap !important;        
+        justify-content: center !important;
+        gap: 12px 8px !important;
+        width: 100% !important;
+    }
+    nav a {
+        margin-left: 0 !important;
+        font-size: 13px !important;
+        padding: 6px 8px !important;
+    }
+    .btn-nav {
+        padding: 6px 14px !important;
+    }
+    .hero {
+        height: auto !important;           
+        padding: 80px 4% 60px 4% !important;
+    }
+    .hero h1 {
+        font-size: 34px !important;
+    }
+    .location-container {
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+    }
+    .map-wrapper {
+        height: 350px;
+    }
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes premiumFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes goldPulseGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(207, 172, 98, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 28px rgba(237, 214, 154, 0.75);
+    }
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Advanced Interactive About Section Styles --- */
+.animated-about-section {
+    background: radial-gradient(circle at 80% 20%, #ffffff 0%, #faf5ef 100%);
+    padding: 100px 8%;
+    overflow: hidden;
+}
+
+.about-hero-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 70px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Luxury Subtitle Badge Design */
+.luxury-badge {
+    background: rgba(140, 86, 71, 0.08);
+    color: #8C5647;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.animated-p {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+/* Stats Counter Row Layout & Text Reveal Elements */
+.luxury-stats-row {
+    display: flex;
+    gap: 35px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(140, 86, 71, 0.15);
+    padding-top: 30px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #8C5647;
+    margin-bottom: 2px;
+    position: relative;
+}
+
+.stat-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777777;
+    font-weight: 500;
+}
+
+/* 3D Kinetic Floating Card System Grid Layout */
+.animated-cards-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    position: relative;
+}
+
+.interactive-tilt-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(140, 86, 71, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 10px 30px rgba(140, 86, 71, 0.03);
+    cursor: pointer;
+}
+
+/* Creates staggering dynamic visual wave elevations across the pairs */
+.interactive-tilt-card:nth-child(even) {
+    transform: translateY(25px);
+}
+
+.card-interior {
+    padding: 35px 25px;
+    z-index: 2;
+    position: relative;
+}
+
+.card-accent-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+    display: inline-block;
+}
+
+.interactive-tilt-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #222222;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.interactive-tilt-card p {
+    font-size: 13.5px;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- High Performance Luxury Hover State Animations --- */
+.interactive-tilt-card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(140, 86, 71, 0.12);
+    border-color: rgba(140, 86, 71, 0.3);
+}
+
+.interactive-tilt-card:hover .card-accent-icon {
+    transform: scale(1.2) rotate(8deg);
+}
+
+.interactive-tilt-card:hover h3 {
+    color: #8C5647;
+}
+
+/* Smooth Scroll-Driven Entry Keyframes */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-on-scroll.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Structural Breakpoints */
+@media (max-width: 992px) {
+    .about-hero-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .interactive-tilt-card:nth-child(even) {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .animated-cards-matrix {
+        grid-template-columns: 1fr;
+    }
+    .luxury-stats-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================================
+   PREMIUM LUXURY PROFILE SECTION (Inspired by 2026-06-18 (4).jpg)
+   ========================================================================== */
+
+/* 1. Infinity Horizontal Ticker */
+.luxury-ticker-wrap {
+    width: 100%;
+    background: #dfbda7; /* Elegant muted luxury gold bar background */
+    padding: 12px 0;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.luxury-ticker {
+    display: flex;
+    white-space: nowrap;
+    gap: 2rem;
+    animation: luxury-marquee 25s linear infinite;
+}
+
+.luxury-ticker span {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #4a2f26; /* Deep brand contrast */
+}
+
+@keyframes luxury-marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+/* 2. Main Container Box Layout */
+.artist-profile-section {
+    background: #1a1a1a; /* Deep luxury dark background block */
+    padding: 100px 10%; /* Generous inner side spacing for premium feel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.artist-profile-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* Perfect balanced two-column setup */
+    gap: 60px; /* Spacious separation gap */
+    align-items: center;
+}
+
+/* 3. Left Side Content Area Typography Styling */
+.artist-bio-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-subtitle-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.artist-subtitle-line .gold-line {
+    width: 35px;
+    height: 1px;
+    background: #c5a880; /* Premium gold accent line */
+}
+
+.artist-subtitle-line .subtitle-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #c5a880;
+    font-weight: 600;
+}
+
+.artist-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: #ffffff; /* High contrast text visibility */
+    margin: 0 0 25px 0;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.artist-p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #b5b5b5; /* Soft modern grey prose text color */
+    margin-bottom: 35px;
+}
+
+/* 4. Luxury 2x2 Outlined Credentials Grid Layout */
+.artist-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.profile-outline-badge {
+    border: 1px solid rgba(197, 168, 128, 0.4); /* Elegant subtle thin gold border */
+    padding: 16px 20px;
+    color: #c5a880;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-align: center;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.4s ease;
+}
+
+.profile-outline-badge:hover {
+    background: rgba(197, 168, 128, 0.1);
+    border-color: #c5a880;
+    transform: translateY(-2px);
+}
+
+/* 5. Right Side Frame Image Block */
+.artist-visual-frame {
+    position: relative;
+    width: 100%;
+    height: 520px; /* Luxury profile portrait height proportions */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.artist-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Keeps aspect ratios safe and professional */
+    filter: brightness(0.95);
+}
+
+/* 6. Signature Branding Panel Overlays */
+.artist-brand-overlay {
+    position: absolute;
+    bottom: 30px;
+    right: 0;
+    background: rgba(26, 26, 26, 0.85); /* Dark elegant matte backdrop shield */
+    backdrop-filter: blur(10px);
+    padding: 20px 35px;
+    border-left: 3px solid #c5a880;
+}
+
+.brand-overlay-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.overlay-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: #c5a880;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.overlay-text-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.overlay-subtitle {
+    font-size: 9px;
+    color: #999999;
+    letter-spacing: 4px;
+    margin-top: 2px;
+}
+
+/* Responsive Grid Adaptations */
+@media (max-width: 992px) {
+    .artist-profile-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .artist-profile-section {
+        padding: 70px 6%;
+    }
+    .artist-visual-frame {
+        height: 450px;
+    }
+}
